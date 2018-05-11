@@ -23,11 +23,12 @@ public class ShootGun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        isFireCount++;
-        if (Input.GetKeyDown(KeyCode.Space))
+ 
+        if (Input.GetKey(KeyCode.Space) && isFireCount < 5) 
         {
+            
             isFiring = true;
-            isFireCount = 0;
+            
             //The Bullet instantiation happens here.
             GameObject Temporary_Bullet_Handler;
             Temporary_Bullet_Handler = Instantiate(Bullet, Bullet_Emitter.transform.position, Bullet_Emitter.transform.rotation) as GameObject;
@@ -44,9 +45,16 @@ public class ShootGun : MonoBehaviour
             //Basic Clean Up, set the Bullets to self destruct after 4 Second.
             Destroy(Temporary_Bullet_Handler, 4);
         }
-        else if (isFireCount >= 10)
+        else if (isFireCount > 20)
+        {
+            isFiring = false;
+            isFireCount = 0;
+        }
+        else
         {
             isFiring = false;
         }
+        isFireCount++;
+        
     }
 }

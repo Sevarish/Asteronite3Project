@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class LoseHealthOnHit : MonoBehaviour
 {
-    public float health = 10;
+    public int maxHealth = 500;
+    public int health;
+    private void Start()
+    {
+        health = maxHealth;
+    }
     void OnCollisionEnter(Collision other)
     {
-        health--;
-        Debug.Log(health);
-        
-        if (health < 1)
-        {
-            Destroy(this.gameObject);
-        }
+
+        GameObject.Find("Player").GetComponent<Health>().DealDamage(12);
 
     }
 }

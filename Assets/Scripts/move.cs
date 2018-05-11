@@ -158,10 +158,10 @@ public class move : MonoBehaviour
         }
 
         // Toggle Inertial dampeners
-        if (Input.GetKeyUp(KeyCode.CapsLock))
-        {
-            flightAssist = !flightAssist;
-        }
+//        if (Input.GetKeyUp(KeyCode.CapsLock))
+//        {
+//            flightAssist = !flightAssist;
+//        }
 
         throttle = Mathf.Clamp(throttle, minThrottle, maxThrottle);
     }
